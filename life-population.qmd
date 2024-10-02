@@ -1,0 +1,28 @@
+---
+title: "Life Expectancy and Population"
+---
+
+# Analyzing Life Expectancy and Population
+
+This page explores the relationship between life expectancy and population using the Gapminder dataset.
+
+Below is a scatter plot visualizing this relationship.
+
+```{python}
+#| echo: true
+#| eval: true
+# Import necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the Gapminder dataset (replace the URL with the location of your dataset if needed)
+data = pd.read_csv("gapminder.csv")
+
+# Create a scatter plot of Population vs Life Expectancy
+plt.figure(figsize=(10,6))
+plt.scatter(data['population_millions'], data['life_expectancy'], alpha=0.5)
+plt.xscale('log')  # Log scale for GDP per Capita
+plt.title('Life Expectancy vs Population')
+plt.xlabel('Population in millions(log scale)')
+plt
+```

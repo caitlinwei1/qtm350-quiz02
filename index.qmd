@@ -1,0 +1,13 @@
+---
+title: "Home"
+---
+
+# Welcome to the Gapminder Data Analysis
+
+The Gapminder dataset provides data on global development trends, including variables such as life expectancy, GDP per capita, population, and more.
+
+Explore the following analyses:
+
+- [Life Expectancy and GDP per Capita](life-gdp.qmd)
+- [Life Expectancy and Population](life-population.qmd)
+- [Country Analysis](country.qmd) 

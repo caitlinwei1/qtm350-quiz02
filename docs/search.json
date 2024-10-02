@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "create-dataset.html",
+    "href": "create-dataset.html",
+    "title": "Create the Gapminder dataset",
+    "section": "",
+    "text": "# Import necessary libraries\nimport pandas as pd\nfrom gapminder import gapminder\n\n# Rename 'lifeExp' to 'life_expectancy' and 'gdpPercap' to 'gdp_per_capita'\ngapminder = gapminder.rename(columns={'lifeExp': 'life_expectancy',\n                                      'pop': 'population_millions', \n                                      'gdpPercap': 'gdp_per_capita'})\n\n# Convert population to millions\ngapminder['population_millions'] = gapminder['population_millions'] / 1_000_000\n\n# Create a new pandas DataFrame from the modified gapminder data\ngapminder_df = pd.DataFrame(gapminder)\n\n# Save the DataFrame as a CSV file\ngapminder_df.to_csv('gapminder.csv', index=False)\n\n# Print the first 3 rows of the DataFrame\nprint(gapminder_df.head(3))\n\n       country continent  year  life_expectancy  population_millions  \\\n0  Afghanistan      Asia  1952           28.801             8.425333   \n1  Afghanistan      Asia  1957           30.332             9.240934   \n2  Afghanistan      Asia  1962           31.997            10.267083   \n\n   gdp_per_capita  \n0      779.445314  \n1      820.853030  \n2      853.100710"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Welcome to the Gapminder Data Analysis\nThe Gapminder dataset provides data on global development trends, including variables such as life expectancy, GDP per capita, population, and more.\nExplore the following analyses:\n\nLife Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis"
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Analysis",
+    "section": "",
+    "text": "Country Analysis: Life Expectancy, GDP per Capita, and Population\nThis page explores the changes in life expectancy, GDP per capita, and population over time for a specific country. In this example, we’ll analyze China using the gapminder dataset.\nBelow is a graph showing the trends of life expectancy, GDP per capita, and population over time for China.\n\n# Import necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Read the Gapminder dataset (replace the URL with the location of your dataset if needed)\ndata = pd.read_csv(\"gapminder.csv\")\n\n# Filter data for a specific country (China in this case)\ncountry_data = data[data['country'] == 'China']\n\n# Create a figure for multiple y-axes\nfig, ax1 = plt.subplots(figsize=(10,6))\n\n# Plot Life Expectancy\nax1.set_xlabel('Year')\nax1.set_ylabel('Life Expectancy', color='tab:blue')\nax1.plot(country_data['year'], country_data['life_expectancy'], label='Life Expectancy', color='tab:blue')\nax1.tick_params(axis='y', labelcolor='tab:blue')\n\n# Plot GDP per Capita on the second y-axis\nax2 = ax1.twinx()\nax2.set_ylabel('GDP per Capita', color='tab:green')\nax2.plot(country_data['year'], country_data['gdp_per_capita'], label='GDP per Capita', color='tab:green')\nax2.tick_params(axis='y', labelcolor='tab:green')\n\n# Plot Population on the third y-axis\nax3 = ax1.twinx()\nax3.spines.right.set_position((\"outward\", 60))  # Move the third y-axis outward\nax3.set_ylabel('Population', color='tab:red')\nax3.plot(country_data['year'], country_data['population_millions'], label='Population', color='tab:red')\nax3.tick_params(axis='y', labelcolor='tab:red')\n\n# Add title and adjust layout\nplt.title('Life Expectancy, GDP per Capita, and Population Over Time (China)')\nfig.tight_layout()  # Adjust layout to prevent overlap\nplt.show()"
+  },
+  {
+    "objectID": "qtm350-quiz02.html",
+    "href": "qtm350-quiz02.html",
+    "title": "qtm350-quiz02",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "qtm350-quiz02.html#quarto",
+    "href": "qtm350-quiz02.html#quarto",
+    "title": "qtm350-quiz02",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "life-gdp.html",
+    "href": "life-gdp.html",
+    "title": "Life and GDP",
+    "section": "",
+    "text": "Analyzing Life Expectancy and GDP per Capita\nThis page explores the relationship between life expectancy and GDP per capita using the Gapminder dataset.\nBelow is a scatter plot visualizing this relationship.\n\n# Import necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Read the Gapminder dataset (replace the URL with the location of your dataset if needed)\ndata = pd.read_csv(\"gapminder.csv\")\n\n# Create a scatter plot of GDP per capita vs Life Expectancy\nplt.figure(figsize=(10,6))\nplt.scatter(data['gdp_per_capita'], data['life_expectancy'], alpha=0.5)\nplt.xscale('log')  # Log scale for GDP per Capita\nplt.title('Life Expectancy vs GDP per Capita')\nplt.xlabel('GDP per Capita (log scale)')\nplt.ylabel('Life Expectancy (years)')\nplt.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "life-population.html",
+    "href": "life-population.html",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "Analyzing Life Expectancy and Population\nThis page explores the relationship between life expectancy and population using the Gapminder dataset.\nBelow is a scatter plot visualizing this relationship.\n\n# Import necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Read the Gapminder dataset (replace the URL with the location of your dataset if needed)\ndata = pd.read_csv(\"gapminder.csv\")\n\n# Create a scatter plot of Population vs Life Expectancy\nplt.figure(figsize=(10,6))\nplt.scatter(data['population_millions'], data['life_expectancy'], alpha=0.5)\nplt.xscale('log')  # Log scale for GDP per Capita\nplt.title('Life Expectancy vs Population')\nplt.xlabel('Population in millions(log scale)')\nplt"
+  }
+]
